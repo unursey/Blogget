@@ -12,5 +12,5 @@ export const Search = () => {
         </svg>
       </button>
     </form>
-  )
-}
+  );
+};

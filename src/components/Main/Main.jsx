@@ -5,8 +5,7 @@ export const Main = () => {
   return (
     <main className={style.main}>
       <Layout>
-       
       </Layout>
     </main>
-  )
-}
+  );
+};
