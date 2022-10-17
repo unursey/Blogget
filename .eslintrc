@@ -11,6 +11,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "no-console": "off",
     "no-loop-func": ["error"],
@@ -139,7 +140,7 @@
         "code": 80,
         "tabWidth": 2,
         "ignoreUrls": true,
-        "ignorePattern": "goog.(module|require)"
+        "ignorePattern": "goog.(module|require)|d=('|\")[\\s\\S]*('|\")"
       }
     ],
     "new-cap": "error",

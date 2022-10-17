@@ -1,7 +1,7 @@
 import style from './Auth.module.css';
 
-export const Auth = ({auth}) => {
-  return (
+export const Auth = ({auth}) =>
+  (
     <button className={style.button}>
       {auth ? auth :
         <svg className={style.svg} width="128" height="128" viewBox="0 0 128 128" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -11,4 +11,3 @@ export const Auth = ({auth}) => {
       }
     </button>
   );
-};
