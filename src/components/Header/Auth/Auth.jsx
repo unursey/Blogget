@@ -1,4 +1,5 @@
 import style from './Auth.module.css';
+import PropTypes from 'prop-types';
 
 export const Auth = ({auth}) =>
   (
@@ -11,3 +12,7 @@ export const Auth = ({auth}) =>
       }
     </button>
   );
+
+Auth.propTypes = {
+  auth: PropTypes.boolean,
+};
