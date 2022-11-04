@@ -1,6 +1,6 @@
 import style from './Content.module.css';
 import PropTypes from 'prop-types';
-import {Text} from '../../../../../UI/Text';
+import {Text} from '../../../../../UI/Text/Text';
 
 export const Content = ({author, title}) => {
   console.log(style);

@@ -3,21 +3,15 @@ import PropTypes from 'prop-types';
 import {useEffect, useState} from 'react';
 import {assignId} from '../../../utils/generateRandomId';
 import {Text} from '../../../UI/Text/Text';
-
-import {ReactComponent as ArrowIcon} from './img/arrow.svg';
-
-import {ReactComponent as HomeIcon} from './img/home.svg';
-import {ReactComponent as BestIcon} from './img/best.svg';
-import {ReactComponent as TopIcon} from './img/top.svg';
-import {ReactComponent as HotIcon} from './img/hot.svg';
+import {SVG} from '../../../UI/SVG/SVG';
 
 import {debounceRaf} from '../../../utils/debounce';
 
 const LIST = [
-  {value: 'Главная', Icon: HomeIcon},
-  {value: 'Топ', Icon: TopIcon},
-  {value: 'Лучшие', Icon: BestIcon},
-  {value: 'Горячие', Icon: HotIcon},
+  {value: 'Главная', Icon: 'homeIcon'},
+  {value: 'Топ', Icon: 'topIcon'},
+  {value: 'Лучшие', Icon: 'bestIcon'},
+  {value: 'Горячие', Icon: 'hotIcon'},
 ].map(assignId);
 
 export const Tabs = () => {
@@ -49,7 +43,7 @@ export const Tabs = () => {
           <Text As='button' className={style.btn}
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             {selectTab}
-            <ArrowIcon width={15} height={15} />
+            <SVG iconName='arrowIcon' width={15} height={15}></SVG>
           </Text>
         </div>
       }
@@ -62,7 +56,7 @@ export const Tabs = () => {
                 className={style.btn}
                 onClick={() => setSelectTab(value)}>
                 {value}
-                {Icon && <Icon width={30} height={30} />}
+                {Icon && <SVG iconName={Icon} width={30} height={30}></SVG>}
               </Text>
             </li>
           ))}

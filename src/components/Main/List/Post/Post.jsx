@@ -4,7 +4,7 @@ import Content from './Content';
 import PostUps from './PostUps';
 import PostDate from './PostDate';
 import PropTypes from 'prop-types';
-import {ReactComponent as DeleteIcon} from './img/delete.svg';
+import {SVG} from '../../../../UI/SVG/SVG';
 
 export const Post = ({postData}) => {
   const {thumbnail, title, author, ups, date} = postData;
@@ -16,7 +16,7 @@ export const Post = ({postData}) => {
       <PostUps ups={ups} />
       <PostDate date={date} />
       <button className={style.delete}>
-        <DeleteIcon />
+        <SVG iconName='deleteIcon'></SVG>
       </button>
     </li>
   );
