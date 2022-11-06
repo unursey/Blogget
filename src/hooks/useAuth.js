@@ -1,10 +1,12 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {URL_API} from '../api/const';
 
-export const useFetch = (state) => {
-  const [auth, setAuth] = useState(state);
+export const useAuth = (token) => {
+  const [auth, setAuth] = useState({});
 
-  const fetchAuth = (token) => {
+  useEffect(() => {
+    if (!token) return;
+
     fetch(`${URL_API}/api/v1/me`, {
       headers: {
         Authorization: `bearer ${token}`
@@ -25,7 +27,7 @@ export const useFetch = (state) => {
         console.err(err);
         setAuth({});
       });
-  };
+  }, [token]);
 
-  return [auth, fetchAuth];
+  return auth;
 };

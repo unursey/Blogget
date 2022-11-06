@@ -2,18 +2,13 @@ import style from './Auth.module.css';
 import PropTypes from 'prop-types';
 import {Text} from '../../../UI/Text/Text';
 import {SVG} from '../../../UI/SVG/SVG';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {urlAuth} from '../../../api/auth';
-import {useFetch} from '../../../hooks/useFetch';
+import {useAuth} from '../../../hooks/useAuth';
 
 export const Auth = ({token, delToken}) => {
-  const [auth, setAuth] = useFetch(token);
+  const auth = useAuth(token);
   const [logout, setLogout] = useState(false);
-
-  useEffect(() => {
-    if (!token) return;
-    setAuth(token);
-  }, [token]);
 
   return (
     <div className={style.container}>
@@ -37,7 +32,6 @@ export const Auth = ({token, delToken}) => {
             className={style.logout}
             onClick={() => {
               setLogout(false);
-              setAuth({});
               delToken();
             }}>
             Выйти
