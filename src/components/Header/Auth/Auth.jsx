@@ -1,14 +1,15 @@
 import style from './Auth.module.css';
-import PropTypes from 'prop-types';
 import {Text} from '../../../UI/Text/Text';
 import {SVG} from '../../../UI/SVG/SVG';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {urlAuth} from '../../../api/auth';
-import {useAuth} from '../../../hooks/useAuth';
+import {tokenContext} from '../../../context/tokenContext';
+import {authContext} from '../../../context/authContext';
 
-export const Auth = ({token, delToken}) => {
-  const auth = useAuth(token);
+export const Auth = () => {
+  const {delToken} = useContext(tokenContext);
   const [logout, setLogout] = useState(false);
+  const {auth, clearAuth} = useContext(authContext);
 
   return (
     <div className={style.container}>
@@ -31,7 +32,7 @@ export const Auth = ({token, delToken}) => {
           <button
             className={style.logout}
             onClick={() => {
-              setLogout(false);
+              clearAuth();
               delToken();
             }}>
             Выйти
@@ -44,9 +45,4 @@ export const Auth = ({token, delToken}) => {
       )}
     </div>
   );
-};
-
-Auth.propTypes = {
-  token: PropTypes.string,
-  delToken: PropTypes.func,
 };

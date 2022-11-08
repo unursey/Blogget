@@ -11,6 +11,7 @@
     -webkit-box-orient: vertical;
     display: -webkit-box;
     margin-bottom: 10px;
+    padding-right: 25px;
     transition: color 0.36s ease-in-out;
   }
   

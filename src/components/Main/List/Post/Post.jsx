@@ -6,15 +6,15 @@ import PostDate from './PostDate';
 import PropTypes from 'prop-types';
 import {SVG} from '../../../../UI/SVG/SVG';
 
-export const Post = ({postData}) => {
-  const {thumbnail, title, author, ups, date} = postData;
+export const Post = (post) => {
+  const {thumbnail, title, author, ups, created} = post;
 
   return (
     <li className={style.post}>
       <Thumbnail thumbnail={thumbnail} title={title} />
       <Content author={author} title={title} />
       <PostUps ups={ups} />
-      <PostDate date={date} />
+      <PostDate date={created} />
       <button className={style.delete}>
         <SVG iconName='deleteIcon'></SVG>
       </button>
@@ -23,5 +23,10 @@ export const Post = ({postData}) => {
 };
 
 Post.propTypes = {
-  postData: PropTypes.object,
+  post: PropTypes.object,
+  author: PropTypes.string,
+  created: PropTypes.number,
+  thumbnail: PropTypes.string,
+  title: PropTypes.string,
+  ups: PropTypes.number,
 };
