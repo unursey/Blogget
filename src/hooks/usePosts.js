@@ -24,7 +24,7 @@ export const usePosts = () => {
         setPosts(data.children);
       })
       .catch(err => {
-        console.err(err);
+        console.error(err);
         setPosts([]);
       });
   }, [token]);

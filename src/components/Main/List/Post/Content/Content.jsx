@@ -10,7 +10,7 @@ export const Content = ({author, title}) => {
         <Text
           As='a'
           size={18}
-          tsize={26}
+          tsize={24}
           bold
           className={style.linkPost}
           href="#post">

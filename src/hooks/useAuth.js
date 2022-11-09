@@ -25,7 +25,7 @@ export const useAuth = () => {
         setAuth({name, img});
       })
       .catch(err => {
-        console.err(err);
+        console.error(err);
         setAuth({});
         delToken();
       });
