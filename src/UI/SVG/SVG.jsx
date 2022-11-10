@@ -7,6 +7,7 @@ import {ReactComponent as HomeIcon} from '../../img/home.svg';
 import {ReactComponent as BestIcon} from '../../img/best.svg';
 import {ReactComponent as TopIcon} from '../../img/top.svg';
 import {ReactComponent as HotIcon} from '../../img/hot.svg';
+import {ReactComponent as CloseIcon} from '../../img/close.svg';
 import PropTypes from 'prop-types';
 
 
@@ -21,6 +22,7 @@ export const SVG = (prop) => {
     bestIcon: BestIcon,
     topIcon: TopIcon,
     hotIcon: HotIcon,
+    closeIcon: CloseIcon,
   };
 
   const {

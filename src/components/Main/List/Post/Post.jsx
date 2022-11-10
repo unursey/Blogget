@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 import {SVG} from '../../../../UI/SVG/SVG';
 
 export const Post = (post) => {
-  const {thumbnail, title, author, ups, created} = post;
+  const {id, thumbnail, title, author, ups, created} = post;
 
   return (
     <li className={style.post}>
       <Thumbnail thumbnail={thumbnail} title={title} />
-      <Content author={author} title={title} />
+      <Content author={author} title={title} id={id} />
       <PostUps ups={ups} />
       <PostDate date={created} />
       <button className={style.delete}>
@@ -24,9 +24,4 @@ export const Post = (post) => {
 
 Post.propTypes = {
   post: PropTypes.object,
-  author: PropTypes.string,
-  created: PropTypes.number,
-  thumbnail: PropTypes.string,
-  title: PropTypes.string,
-  ups: PropTypes.number,
 };

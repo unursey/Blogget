@@ -9,9 +9,15 @@ export const List = () => {
   return (
     <ul className={style.list}>
       {posts.map(({data}, index) => (
-        <Post key={index} id={data.id} author={data.author}
-          title={data.title} created={data.created}
-          thumbnail={data.thumbnail} ups={data.ups} />
+        <Post
+          key={index}
+          id={data.id}
+          author={data.author}
+          title={data.title}
+          created={data.created}
+          thumbnail={data.thumbnail}
+          ups={data.ups}
+          markdown={data.selftext}/>
       ))}
     </ul>
   );
