@@ -12,7 +12,7 @@ export const useCommentsData = (id) => {
     if (!token) return;
     setIsLoading(true);
 
-    fetch(`${URL_API}/commentss/${id}`, {
+    fetch(`${URL_API}/comments/${id}`, {
       headers: {
         Authorization: `bearer ${token}`,
       },

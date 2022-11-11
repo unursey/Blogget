@@ -1,6 +1,7 @@
 {
   "name": "blogget",
   "version": "0.1.0",
+  "homepage": "https://unursey.github.io/Blogget",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -20,7 +21,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "comp": "hygen create component"
+    "comp": "hygen create component",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +46,7 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.31.10",
+    "gh-pages": "^4.0.0",
     "hygen": "^6.2.11"
   }
 }
