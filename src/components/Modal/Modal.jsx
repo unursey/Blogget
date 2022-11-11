@@ -41,10 +41,10 @@ export const Modal = ({id, closeModal}) => {
         {isLoading &&
         (<h2 className={style.loading}>Загрузка ...</h2>)}
 
-        {isError &&
+        {!isLoading && isError &&
         (<h2 className={style.error}>Ошибка загрузки</h2>)}
 
-        {!isLoading && post && (
+        {!isError && !isLoading && post && (
           <>
             <h2 className={style.title}>{post.title}</h2>
 

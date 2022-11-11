@@ -12,7 +12,7 @@ export const useCommentsData = (id) => {
     if (!token) return;
     setIsLoading(true);
 
-    fetch(`${URL_API}/comments/${id}`, {
+    fetch(`${URL_API}/commentss/${id}`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
@@ -30,6 +30,7 @@ export const useCommentsData = (id) => {
           .map(item => item.data);
         setCommentsData([post, comments]);
         setIsLoading(false);
+        setIsError(null);
       })
       .catch(err => {
         console.error(err);
