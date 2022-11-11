@@ -27,6 +27,7 @@ export const useCommentsData = (id) => {
         const post = result[0].data.children[0].data;
         const comments = result[1].data.children
           .filter((item) => item.kind !== 'more')
+          .filter((item) => item.data.author !== '[deleted]')
           .map(item => item.data);
         setCommentsData([post, comments]);
         setIsLoading(false);
