@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/Blogget/static/css/main.7bfa30c1.css",
+    "main.js": "/Blogget/static/js/main.89eb0d9e.js",
+    "static/media/merriweather-sans-v20-latin_cyrillic-ext-700.woff": "/Blogget/static/media/merriweather-sans-v20-latin_cyrillic-ext-700.d14ade0212b2a8541413.woff",
+    "static/media/merriweather-sans-v20-latin_cyrillic-ext-500.woff": "/Blogget/static/media/merriweather-sans-v20-latin_cyrillic-ext-500.2206a760c25c43b14af8.woff",
+    "static/media/merriweather-sans-v20-latin_cyrillic-ext-regular.woff": "/Blogget/static/media/merriweather-sans-v20-latin_cyrillic-ext-regular.44846330ef5e4435929c.woff",
+    "static/media/merriweather-sans-v20-latin_cyrillic-ext-700.woff2": "/Blogget/static/media/merriweather-sans-v20-latin_cyrillic-ext-700.e85ac293918fc6af7b45.woff2",
+    "static/media/merriweather-sans-v20-latin_cyrillic-ext-500.woff2": "/Blogget/static/media/merriweather-sans-v20-latin_cyrillic-ext-500.72bde37dd57b911700f5.woff2",
+    "static/media/merriweather-sans-v20-latin_cyrillic-ext-regular.woff2": "/Blogget/static/media/merriweather-sans-v20-latin_cyrillic-ext-regular.4117fa953d231092315a.woff2",
+    "static/media/best.svg": "/Blogget/static/media/best.bdc35cdcd6156268464c80ad4f522bb4.svg",
+    "static/media/top.svg": "/Blogget/static/media/top.5db0937592cde6e0d61a78e8f0baacc4.svg",
+    "static/media/logo.svg": "/Blogget/static/media/logo.5332ef986395c9a231d531c693a9b11e.svg",
+    "static/media/home.svg": "/Blogget/static/media/home.967450915b3e6a415ee435a81a9498f4.svg",
+    "static/media/hot.svg": "/Blogget/static/media/hot.490f97b97ea28edfff996bceb363cad4.svg",
+    "static/media/login.svg": "/Blogget/static/media/login.75eb8abd9b591d2a09d7aeba8fd1a8d2.svg",
+    "static/media/close.svg": "/Blogget/static/media/close.f4c9900207807a8f06c7ea044523d204.svg",
+    "static/media/delete.svg": "/Blogget/static/media/delete.a2246a936643aa0da4449f1e71edfb94.svg",
+    "static/media/search.svg": "/Blogget/static/media/search.7f37a3bb84927de422c7616bc1856b90.svg",
+    "index.html": "/Blogget/index.html",
+    "static/media/arrow.svg": "/Blogget/static/media/arrow.d412babf78121a5fea10a05d7b1502fb.svg",
+    "static/media/up.svg": "/Blogget/static/media/up.1c426ad418b0a7d3d05c.svg",
+    "static/media/down.svg": "/Blogget/static/media/down.43603c59a9a1a57128ab.svg",
+    "main.7bfa30c1.css.map": "/Blogget/static/css/main.7bfa30c1.css.map",
+    "main.89eb0d9e.js.map": "/Blogget/static/js/main.89eb0d9e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7bfa30c1.css",
+    "static/js/main.89eb0d9e.js"
+  ]
+}
