@@ -72,6 +72,26 @@
   border-color: var(--green);
 }
 
+.loading {
+  position: absolute;
+  font-size: 32px;
+  color: rgb(46, 44, 44);
+  font-weight: 700;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.error {
+  position: absolute;
+  font-size: 32px;
+  color: rgb(204, 32, 32);
+  font-weight: 700;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
 @media (min-width: 768px) {
   .modal {
     padding: 30px;

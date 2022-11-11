@@ -6,7 +6,6 @@ import Modal from '../../../../Modal';
 
 export const Content = ({author, title, id}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className={style.content}>
@@ -21,7 +20,6 @@ export const Content = ({author, title, id}) => {
           href="#post"
           onClick={() => {
             setIsModalOpen(true);
-            setIsLoading(true);
           }}>
           {title}
         </Text>
@@ -35,15 +33,9 @@ export const Content = ({author, title, id}) => {
         href='#author'>
         {author}
       </Text>
-      {isLoading &&
-        (<div className={style.overlay}>
-          <h2 className={style.loading}>Загрузка ...</h2>
-        </div>)}
       {isModalOpen &&
         (<Modal
           id={id}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
           closeModal={() => {
             setIsModalOpen(false);
           }}

@@ -36,24 +36,6 @@
   .linkAuthor:hover {
     color: #2d2d2d;
   }
-  
-  .overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 99;
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-  
-  .loading {
-    position: absolute;
-    font-size: 32px;
-    color: rgb(248, 245, 245);
-    font-weight: 700;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-  }
-  
 
   @media (min-width: 580px) {
     .linkPost:hover {

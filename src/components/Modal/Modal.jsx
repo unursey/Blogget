@@ -8,13 +8,18 @@ import {useCommentsData} from '../../hooks/useCommentsData';
 import {Comments} from './Comments/Comments';
 import {FormComment} from './FormComment/FormComment';
 
-export const Modal = ({id, closeModal, isLoading, setIsLoading}) => {
-  const [commentsData] = useCommentsData({id});
+export const Modal = ({id, closeModal}) => {
+  const {
+    commentsData: [post, comments],
+    isLoading,
+    isError,
+  } = useCommentsData(id);
+
   const [isVisibleForm, setIsVisibleForm] = useState(false);
 
   const overlayRef = useRef(null);
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     const target = e.target;
     if (target === overlayRef.current || e.keyCode === 27) {
       closeModal();
@@ -30,59 +35,65 @@ export const Modal = ({id, closeModal, isLoading, setIsLoading}) => {
     };
   }, []);
 
-  if (commentsData.length > 0) {
-    setIsLoading(false);
-    return ReactDOM.createPortal(
-      <div className={style.overlay} ref={overlayRef}>
-        <div className={style.modal}>
-          <h2 className={style.title}>{commentsData[0].title}</h2>
+  return ReactDOM.createPortal(
+    <div className={style.overlay} ref={overlayRef}>
+      <div className={style.modal}>
+        {isLoading &&
+        (<h2 className={style.loading}>Загрузка ...</h2>)}
 
-          <div className={style.content}>
-            <Markdown options={{
-              overrides: {
-                a: {
-                  props: {
-                    target: '_blank',
+        {isError &&
+        (<h2 className={style.error}>Ошибка загрузки</h2>)}
+
+        {!isLoading && post && (
+          <>
+            <h2 className={style.title}>{post.title}</h2>
+
+            <div className={style.content}>
+              <Markdown
+                options={{
+                  overrides: {
+                    a: {
+                      props: {
+                        target: '_blank',
+                      },
+                    },
                   },
-                },
-              },
-            }}>
-              {commentsData[0].selftext}
-            </Markdown>
-          </div>
+                }}
+              >
+                {post.selftext}
+              </Markdown>
+            </div>
 
-          <p className={style.author}>{commentsData[0].author}</p>
-          {!isVisibleForm &&
-            <button className={style.btn}
-              onClick={() => setIsVisibleForm(true)}>
-              Написать комментарий
-            </button>}
-          {isVisibleForm && <FormComment />}
+            <p className={style.author}>{post.author}</p>
+            {!isVisibleForm && (
+              <button
+                className={style.btn}
+                onClick={() => setIsVisibleForm(true)}
+              >
+                Написать комментарий
+              </button>
+            )}
+            {isVisibleForm && <FormComment />}
 
-          <Comments comments={commentsData[1]} />
+            <Comments comments={comments} />
 
-          <button
-            className={style.close}
-            onClick={() => {
-              closeModal();
-            }}
-          >
-            <SVG
-              iconName='closeIcon'
-              alt='Логотип Blogget'>
-            </SVG>
-          </button>
-        </div>
-      </div>,
-      document.getElementById('modal-root'),
-    );
-  }
+            <button
+              className={style.close}
+              onClick={() => {
+                closeModal();
+              }}
+            >
+              <SVG iconName="closeIcon" alt="Закрыть"></SVG>
+            </button>
+          </>
+        )}
+      </div>
+    </div>,
+    document.getElementById('modal-root')
+  );
 };
 
 Modal.propTypes = {
   id: PropTypes.string,
-  markdown: PropTypes.string,
   closeModal: PropTypes.func,
-  isLoading: PropTypes.bool,
-  setIsLoading: PropTypes.func,
 };

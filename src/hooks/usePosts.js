@@ -9,7 +9,7 @@ export const usePosts = () => {
   useEffect(() => {
     if (!token) return;
 
-    fetch(`${URL_API}/best?limit=10`, {
+    fetch(`${URL_API}/best?limit=22`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
