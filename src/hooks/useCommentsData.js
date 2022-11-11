@@ -30,7 +30,6 @@ export const useCommentsData = (id) => {
           .map(item => item.data);
         setCommentsData([post, comments]);
         setIsLoading(false);
-        console.log('commentsData: ', commentsData);
       })
       .catch(err => {
         console.error(err);
