@@ -3,16 +3,13 @@ import notphoto from './img/notphoto.jpg';
 import PropTypes from 'prop-types';
 import {useState} from 'react';
 
-export const Thumbnail = ({thumbnail, title}) => {
-  console.log(thumbnail);
-  return (
-    <Image
-      className={style.img}
-      src={thumbnail ? thumbnail : notphoto}
-      alt={title}
-    />
-  );
-};
+export const Thumbnail = ({thumbnail, title}) => (
+  <Image
+    className={style.img}
+    src={thumbnail ? thumbnail : notphoto}
+    alt={title}
+  />
+);
 
 // eslint-disable-next-line react/prop-types
 const Image = ({alt, src, ...rest}) => {

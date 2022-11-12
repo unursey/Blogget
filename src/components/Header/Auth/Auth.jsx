@@ -3,11 +3,13 @@ import {Text} from '../../../UI/Text/Text';
 import {SVG} from '../../../UI/SVG/SVG';
 import {useState, useContext} from 'react';
 import {urlAuth} from '../../../api/auth';
-import {tokenContext} from '../../../context/tokenContext';
 import {authContext} from '../../../context/authContext';
+import {deleteToken} from '../../../store';
+import {useDispatch} from 'react-redux';
 
 export const Auth = () => {
-  const {delToken} = useContext(tokenContext);
+  const dispatch = useDispatch();
+
   const [logout, setLogout] = useState(false);
   const {auth, clearAuth} = useContext(authContext);
 
@@ -33,7 +35,7 @@ export const Auth = () => {
             className={style.logout}
             onClick={() => {
               clearAuth();
-              delToken();
+              dispatch(deleteToken());
             }}>
             Выйти
           </button> : ''}
