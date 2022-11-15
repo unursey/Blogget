@@ -1,14 +1,17 @@
-import {useContext} from 'react';
 import style from './List.module.css';
-import {postsContext} from '../../../context/postsContext';
+import {usePosts} from '../../../hooks/usePosts';
 import Post from './Post';
+import Preloader from '../../../UI/Preloader';
 
 export const List = () => {
-  const {posts} = useContext(postsContext);
+  const [posts, loading, status] = usePosts();
+
 
   return (
     <ul className={style.list}>
-      {posts.map(({data}, index) => (
+      {loading && (<Preloader />)}
+      {!loading && status === 'error' && 'Вы не авторизованы'}
+      {!loading && status === 'login' && posts.map(({data}, index) => (
         <Post
           key={index}
           id={data.id}

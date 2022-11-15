@@ -1,21 +1,22 @@
 import style from './Auth.module.css';
 import {Text} from '../../../UI/Text/Text';
 import {SVG} from '../../../UI/SVG/SVG';
-import {useState, useContext} from 'react';
+import {useState} from 'react';
 import {urlAuth} from '../../../api/auth';
-import {authContext} from '../../../context/authContext';
-import {deleteToken} from '../../../store';
+import {deleteToken} from '../../../store/tokenReducer';
 import {useDispatch} from 'react-redux';
+import {useAuth} from '../../../hooks/useAuth';
+import Preloader from '../../../UI/Preloader';
+import {ErrorAuth} from '../../ErrorAuth/ErrorAuth';
 
 export const Auth = () => {
   const dispatch = useDispatch();
-
   const [logout, setLogout] = useState(false);
-  const {auth, clearAuth} = useContext(authContext);
+  const [auth, loading, status, clearAuth] = useAuth();
 
   return (
     <div className={style.container}>
-      {auth.name ? (
+      {loading ? <Preloader /> : auth.name ? (
         <>
           <button
             className={style.btn}
@@ -40,9 +41,11 @@ export const Auth = () => {
             Выйти
           </button> : ''}
         </>
-      ) : (
+      ) :
+      (
         <Text className={style.authLink} As='a' href={urlAuth}>
           <SVG iconName='loginIcon' className={style.svg} />
+          {status === 'error' && <ErrorAuth />}
         </Text>
       )}
     </div>

@@ -7,12 +7,12 @@ import {useEffect, useRef, useState} from 'react';
 import {useCommentsData} from '../../hooks/useCommentsData';
 import {Comments} from './Comments/Comments';
 import {FormComment} from './FormComment/FormComment';
+import Preloader from '../../UI/Preloader';
 
 export const Modal = ({id, closeModal}) => {
   const {
     commentsData: [post, comments],
-    isLoading,
-    isError,
+    status,
   } = useCommentsData(id);
 
   const [isVisibleForm, setIsVisibleForm] = useState(false);
@@ -38,13 +38,12 @@ export const Modal = ({id, closeModal}) => {
   return ReactDOM.createPortal(
     <div className={style.overlay} ref={overlayRef}>
       <div className={style.modal}>
-        {isLoading &&
-        (<h2 className={style.loading}>Загрузка ...</h2>)}
+        {status === 'loading' && <><Preloader /></>}
 
-        {!isLoading && isError &&
+        {status === 'error' &&
         (<h2 className={style.error}>Ошибка загрузки</h2>)}
 
-        {!isError && !isLoading && post && (
+        {status === 'loaded' && post && (
           <>
             <h2 className={style.title}>{post.title}</h2>
 
