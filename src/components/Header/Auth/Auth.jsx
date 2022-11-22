@@ -18,7 +18,7 @@ export const Auth = () => {
 
   return (
     <div className={style.container}>
-      {loading ? <Preloader /> : status === 'login' ? (
+      {loading ? <Preloader /> : auth.name ? (
         <>
           <button
             className={style.btn}

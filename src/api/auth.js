@@ -16,3 +16,4 @@ searchParams.append('redirect_uri', REDIRECT_URI);
 searchParams.append('scope', SCOPE);
 
 export const urlAuth = `${URL_AUTH}${searchParams.toString()}`;
+

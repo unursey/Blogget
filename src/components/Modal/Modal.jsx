@@ -9,6 +9,7 @@ import {Comments} from './Comments/Comments';
 import {FormComment} from './FormComment/FormComment';
 import Preloader from '../../UI/Preloader';
 import {useNavigate, useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 export const Modal = () => {
   const {id, page} = useParams();
@@ -17,6 +18,7 @@ export const Modal = () => {
     commentsData: [post, comments],
     status,
   } = useCommentsData(id);
+  const token = useSelector(state => state.tokenReducer.token);
   const [isVisibleForm, setIsVisibleForm] = useState(false);
   const overlayRef = useRef(null);
 
@@ -36,13 +38,14 @@ export const Modal = () => {
     };
   }, []);
 
+  if (!token) return;
   return ReactDOM.createPortal(
     <div className={style.overlay} ref={overlayRef}>
       <div className={style.modal}>
         {status === 'loading' && <><Preloader /></>}
 
         {status === 'error' &&
-        (<h2 className={style.error}>Ошибка загрузки</h2>)}
+        (<h2 className={style.error}>Ошибка загрузки. Авторизуйтесь.</h2>)}
 
         {status === 'loaded' && post && (
           <>
