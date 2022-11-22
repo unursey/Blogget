@@ -8,8 +8,8 @@ export const Comments = ({comments}) => {
     return (
       <ul className={style.list}>
         {
-          comments.map((comment, index) => (
-            <li className={style.item} key={index}>
+          comments.map((comment) => comment.body && (
+            <li className={style.item} key={comment.id}>
               <Text As='h3' className={style.author} size={18} tsize={22}>
                 {comment.author}
               </Text>

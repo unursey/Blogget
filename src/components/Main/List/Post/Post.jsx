@@ -6,7 +6,7 @@ import PostDate from './PostDate';
 import PropTypes from 'prop-types';
 import {SVG} from '../../../../UI/SVG/SVG';
 
-export const Post = (post) => {
+export const Post = ({post}) => {
   const {id, thumbnail, title, author, ups, created} = post;
 
   return (

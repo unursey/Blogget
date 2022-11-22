@@ -8,15 +8,17 @@ import {useDispatch} from 'react-redux';
 import {useAuth} from '../../../hooks/useAuth';
 import Preloader from '../../../UI/Preloader';
 import {ErrorAuth} from '../../ErrorAuth/ErrorAuth';
+import {useNavigate} from 'react-router-dom';
 
 export const Auth = () => {
   const dispatch = useDispatch();
   const [logout, setLogout] = useState(false);
   const [auth, loading, status, clearAuth] = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className={style.container}>
-      {loading ? <Preloader /> : auth.name ? (
+      {loading ? <Preloader /> : status === 'login' ? (
         <>
           <button
             className={style.btn}
@@ -37,6 +39,7 @@ export const Auth = () => {
             onClick={() => {
               clearAuth();
               dispatch(deleteToken());
+              navigate('/');
             }}>
             Выйти
           </button> : ''}

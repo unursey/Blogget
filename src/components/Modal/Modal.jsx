@@ -8,21 +8,22 @@ import {useCommentsData} from '../../hooks/useCommentsData';
 import {Comments} from './Comments/Comments';
 import {FormComment} from './FormComment/FormComment';
 import Preloader from '../../UI/Preloader';
+import {useNavigate, useParams} from 'react-router-dom';
 
-export const Modal = ({id, closeModal}) => {
+export const Modal = () => {
+  const {id, page} = useParams();
+  const navigate = useNavigate();
   const {
     commentsData: [post, comments],
     status,
   } = useCommentsData(id);
-
   const [isVisibleForm, setIsVisibleForm] = useState(false);
-
   const overlayRef = useRef(null);
 
   const handleClick = (e) => {
     const target = e.target;
     if (target === overlayRef.current || e.keyCode === 27) {
-      closeModal();
+      navigate(`/category/${page}`);
     }
   };
 
@@ -79,7 +80,7 @@ export const Modal = ({id, closeModal}) => {
             <button
               className={style.close}
               onClick={() => {
-                closeModal();
+                navigate(`/category/${page}`);
               }}
             >
               <SVG iconName="closeIcon" alt="Закрыть"></SVG>
