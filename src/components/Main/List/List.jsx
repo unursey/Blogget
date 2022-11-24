@@ -53,9 +53,7 @@ export const List = () => {
   return (
     <>
       <ul className={style.list}>
-        {loading && <Preloader />}
         {!loading && status !== 'login' && <>Вы не авторизованы</>}
-
         {status === 'login' &&
         posts.map(({data}) => (
           <Post
@@ -63,7 +61,7 @@ export const List = () => {
             post={data}
           />
         ))}
-
+        {loading && <div className={style.more}><Preloader /></div>}
         {num <= 2 ?
           <li ref={endList} className={style.end}/> : !isLast ? (
             <div className={style.more}>
