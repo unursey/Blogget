@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {postsRequestAsync} from '../../../store/posts/postsAction';
 import {Outlet, useParams, useNavigate} from 'react-router-dom';
 import {LIST} from '../Tabs/Tabs';
+import {postsSlice} from '../../../store/posts/postsSlice';
 
 const errorPage = (page) => {
   if (LIST.find(item => item.link === page)) {
@@ -28,6 +29,7 @@ export const List = () => {
 
   useEffect(() => {
     errorPage(page) ? navigate('*') :
+    dispatch(postsSlice.actions.changePage(page));
     dispatch(postsRequestAsync(page));
   }, [page]);
 
@@ -53,7 +55,7 @@ export const List = () => {
   return (
     <>
       <ul className={style.list}>
-        {!loading && status !== 'login' && <>Вы не авторизованы</>}
+        {status !== 'login' && <>Вы не авторизованы</>}
         {status === 'login' &&
         posts.map(({data}) => (
           <Post
@@ -61,7 +63,8 @@ export const List = () => {
             post={data}
           />
         ))}
-        {loading && <div className={style.more}><Preloader /></div>}
+        {loading && status === 'login' &&
+          <div className={style.more}><Preloader /></div>}
         {num <= 2 ?
           <li ref={endList} className={style.end}/> : !isLast ? (
             <div className={style.more}>
